@@ -70,7 +70,7 @@ public class BookController {
             // return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
         }catch(Exception e){
             e.printStackTrace();
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
 
     }
@@ -81,11 +81,11 @@ public class BookController {
         //this.bookService.addBook(books, id);
         try{
             this.bookService.addBook(books,id);
-            return ResponseEntity.ok().build();
-            // return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+            // return ResponseEntity.ok().build();
+            return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
         }catch(Exception e){
             e.printStackTrace();
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
 }
