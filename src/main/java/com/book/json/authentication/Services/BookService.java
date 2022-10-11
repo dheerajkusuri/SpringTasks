@@ -50,4 +50,13 @@ public class BookService {
         }*/).collect(Collectors.toList());
     }
 
+ //Update the books
+    public void addBook(Books books, int id) {
+       list = list.stream().map(b->{
+            if(b.getId()==id){
+                b.setbook(books.getbook());
+            }
+            return b;
+       }).collect(Collectors.toList());
+    }
 }
