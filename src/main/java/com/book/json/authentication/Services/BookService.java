@@ -1,11 +1,14 @@
 package com.book.json.authentication.Services;
 
 import com.book.json.authentication.Entities.Books;
+import org.springframework.stereotype.Component;
 
-import java.awt.print.Book;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
+@Component //@Service can also be be used as we are using the @Autowired in the Book Controller
+// class instead of creating the object for the class
 public class BookService {
     private static List<Books> list = new ArrayList<>();
 
@@ -28,6 +31,23 @@ public class BookService {
                 e.getId() == id
         ).findFirst().get();
         return book;
+    }
+
+    public Books addBook(Books books){
+        list.add(books);
+        return books;
+    }
+
+    public void delBook(int id) {
+
+        list = list.stream().filter(book ->book.getId()!=id
+       /* {
+            if (book.getId() != id) {
+                return true;
+            } else {
+                return false;
+            }
+        }*/).collect(Collectors.toList());
     }
 
 }
